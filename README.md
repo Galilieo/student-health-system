@@ -1,2 +1,23 @@
 # student-health-system
-A smart health habit management system for college students.
+
+## 项目简介
+面向大学生的智能健康习惯管理系统，支持饮食、饮水、睡眠、运动等日常打卡，并通过数据分析与智能建议辅助用户养成规律生活方式。
+
+## 核心功能
+- 用户登录注册
+- 每日健康打卡
+- 历史记录查询
+- 图表数据展示
+- 本地提醒功能
+- 健康目标设置
+- 智能建议生成
+- 管理员后台管理
+
+## 项目结构
+```text
+docs/
+android-app/
+backend/
+database/
+test/
+ppt/
