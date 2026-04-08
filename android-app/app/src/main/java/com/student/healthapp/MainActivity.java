@@ -1,17 +1,28 @@
 package com.student.healthapp;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import android.content.Intent;
-import android.widget.Button;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TextView tvDate;
+    private TextView tvStreak;
+    private TextView tvWater;
+    private TextView tvSleep;
+    private TextView tvExercise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +36,61 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        tvDate = findViewById(R.id.tvDate);
+        tvStreak = findViewById(R.id.tvStreak);
+        tvWater = findViewById(R.id.tvWater);
+        tvSleep = findViewById(R.id.tvSleep);
+        tvExercise = findViewById(R.id.tvExercise);
+
         Button btnLogout = findViewById(R.id.btnLogout);
+        Button btnCheckIn = findViewById(R.id.btnCheckIn);
+        Button btnHistory = findViewById(R.id.btnHistory);
+
         btnLogout.setOnClickListener(v -> {
             getSharedPreferences("auth", MODE_PRIVATE).edit().remove("token").apply();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
         });
+
+        btnCheckIn.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, CheckInActivity.class))
+        );
+
+        btnHistory.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, HistoryActivity.class))
+        );
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadSummaryFromLocal();
+        syncSummaryFromServer();
+    }
+
+    private void loadSummaryFromLocal() {
+        String today = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        tvDate.setText(today);
+
+        SharedPreferences sp = getSharedPreferences("health_data", MODE_PRIVATE);
+        String savedDate = sp.getString("today_date", "");
+        int water = 0;
+        float sleep = 0.0f;
+        int exercise = 0;
+
+        if (today.equals(savedDate)) {
+            water = sp.getInt("today_water", 0);
+            sleep = sp.getFloat("today_sleep", 0.0f);
+            exercise = sp.getInt("today_exercise", 0);
+        }
+
+        tvStreak.setText((water > 0 || sleep > 0 || exercise > 0) ? "连续打卡：1天" : "连续打卡：0天");
+        tvWater.setText("饮水：" + water + " / 8 杯");
+        tvSleep.setText("睡眠：" + sleep + " 小时");
+        tvExercise.setText("运动：" + exercise + " 分钟");
+    }
+
+    private void syncSummaryFromServer() {
+        // TODO: 后端接口完成后，在这里调用 GET /summary/today 刷新首页数据。
     }
 }
