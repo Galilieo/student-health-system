@@ -36,10 +36,13 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-
         EditText etAccount = findViewById(R.id.etAccount);
         EditText etPassword = findViewById(R.id.etPassword);
         Button btnLogin = findViewById(R.id.btnLogin);
+
+        findViewById(R.id.tvGoRegister).setOnClickListener(v ->
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class))
+        );
 
         btnLogin.setOnClickListener(v -> {
             String account = etAccount.getText().toString().trim();
@@ -89,9 +92,8 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             onLoginFailed("账号或密码错误", btnLogin);
-
         } catch (Exception e) {
-            // 后端未就绪时测试兜底账号
+            // 后端未就绪时用测试账号兜底，上线前删除此分支。
             if ("test".equals(account) && "123456".equals(password)) {
                 onLoginSuccess("mock-token-123");
             } else {

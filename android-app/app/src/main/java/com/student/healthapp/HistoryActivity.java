@@ -40,19 +40,19 @@ public class HistoryActivity extends AppCompatActivity {
 
         if (savedDate.isEmpty()) {
             tvHistoryDate.setText("日期：暂无记录");
-            tvHistoryWater.setText("饮水：0 杯");
-            tvHistorySleep.setText("睡眠：0.0 小时");
-            tvHistoryExercise.setText("运动：0 分钟");
+            tvHistoryWater.setText("💧  饮水：0 杯");
+            tvHistorySleep.setText("🛌  睡眠：0.0 小时");
+            tvHistoryExercise.setText("🏃  运动：0 分钟");
             return;
         }
 
         tvHistoryDate.setText("日期：" + savedDate);
-        tvHistoryWater.setText("饮水：" + water + " 杯");
-        tvHistorySleep.setText("睡眠：" + sleep + " 小时");
-        tvHistoryExercise.setText("运动：" + exercise + " 分钟");
+        tvHistoryWater.setText("💧  饮水：" + water + " 杯");
+        tvHistorySleep.setText("🛌  睡眠：" + sleep + " 小时");
+        tvHistoryExercise.setText("🏃  运动：" + exercise + " 分钟");
     }
 
     private void fetchHistoryFromServer() {
-        // TODO: 后端接口完成后，在这里调用 GET /history。
+        // TODO 后端就绪后接入 GET /history。当前页面先展示本地最近一条记录。
     }
 }

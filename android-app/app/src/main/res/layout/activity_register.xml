@@ -8,41 +8,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="@dimen/spacing_m">
+        android:padding="@dimen/spacing_l">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="今日打卡"
+            android:layout_marginTop="@dimen/spacing_xl"
+            android:layout_marginBottom="@dimen/spacing_xl"
+            android:text="创建账号"
             android:textColor="@color/text_main"
-            android:textSize="@dimen/text_title"
+            android:textSize="@dimen/text_huge"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xs"
-            android:text="填写今天的健康数据"
-            android:textColor="@color/text_sub"
-            android:textSize="@dimen/text_caption" />
-
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_l"
-            android:hint="💧 饮水（杯）"
+            android:hint="账号"
             app:boxCornerRadiusBottomEnd="@dimen/radius_input"
             app:boxCornerRadiusBottomStart="@dimen/radius_input"
             app:boxCornerRadiusTopEnd="@dimen/radius_input"
             app:boxCornerRadiusTopStart="@dimen/radius_input">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etWater"
+                android:id="@+id/etRegAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -50,17 +44,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_m"
-            android:hint="🛌 睡眠（小时，如 7.5）"
+            android:hint="密码"
             app:boxCornerRadiusBottomEnd="@dimen/radius_input"
             app:boxCornerRadiusBottomStart="@dimen/radius_input"
             app:boxCornerRadiusTopEnd="@dimen/radius_input"
-            app:boxCornerRadiusTopStart="@dimen/radius_input">
+            app:boxCornerRadiusTopStart="@dimen/radius_input"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etSleep"
+                android:id="@+id/etRegPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -68,29 +63,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_m"
-            android:hint="🏃 运动（分钟）"
+            android:hint="确认密码"
             app:boxCornerRadiusBottomEnd="@dimen/radius_input"
             app:boxCornerRadiusBottomStart="@dimen/radius_input"
             app:boxCornerRadiusTopEnd="@dimen/radius_input"
-            app:boxCornerRadiusTopStart="@dimen/radius_input">
+            app:boxCornerRadiusTopStart="@dimen/radius_input"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etExercise"
+                android:id="@+id/etRegConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSubmitCheckIn"
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
             android:layout_marginTop="@dimen/spacing_l"
             android:backgroundTint="@color/primary"
-            android:text="提交打卡"
+            android:text="注册"
             android:textColor="@color/white"
             android:textSize="@dimen/text_body"
             app:cornerRadius="25dp" />
 
+        <TextView
+            android:id="@+id/tvGoLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_m"
+            android:padding="@dimen/spacing_s"
+            android:text="已有账号？去登录"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/text_caption" />
     </LinearLayout>
 </ScrollView>

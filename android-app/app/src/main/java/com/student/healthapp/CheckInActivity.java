@@ -60,8 +60,6 @@ public class CheckInActivity extends AppCompatActivity {
     }
 
     private void uploadCheckInToServer(int water, float sleep, int exercise, String today) {
-        // TODO: 后端接口完成后，在这里调用 POST /checkin。
-        // 目前先走本地保存，保证前端流程可演示。
         SharedPreferences sp = getSharedPreferences("health_data", MODE_PRIVATE);
         sp.edit()
                 .putString("today_date", today)
@@ -70,6 +68,7 @@ public class CheckInActivity extends AppCompatActivity {
                 .putInt("today_exercise", exercise)
                 .apply();
 
+        // TODO 后端就绪后接入 POST /checkin。当前先写本地，保证离线也能看到数据。
         Toast.makeText(this, "提交成功", Toast.LENGTH_SHORT).show();
         finish();
     }

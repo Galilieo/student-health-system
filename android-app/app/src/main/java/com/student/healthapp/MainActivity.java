@@ -84,13 +84,14 @@ public class MainActivity extends AppCompatActivity {
             exercise = sp.getInt("today_exercise", 0);
         }
 
-        tvStreak.setText((water > 0 || sleep > 0 || exercise > 0) ? "连续打卡：1天" : "连续打卡：0天");
-        tvWater.setText("饮水：" + water + " / 8 杯");
-        tvSleep.setText("睡眠：" + sleep + " 小时");
-        tvExercise.setText("运动：" + exercise + " 分钟");
+        int streak = (water > 0 || sleep > 0 || exercise > 0) ? 1 : 0;
+        tvStreak.setText("连续打卡：" + streak + " 天");
+        tvWater.setText("💧  饮水：" + water + " / 8 杯");
+        tvSleep.setText("🛌  睡眠：" + sleep + " 小时");
+        tvExercise.setText("🏃  运动：" + exercise + " 分钟");
     }
 
     private void syncSummaryFromServer() {
-        // TODO: 后端接口完成后，在这里调用 GET /summary/today 刷新首页数据。
+        // TODO 后端就绪后接入 GET /summary/today，并在 runOnUiThread 中刷新页面。
     }
 }
