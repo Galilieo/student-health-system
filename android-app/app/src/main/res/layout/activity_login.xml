@@ -1,28 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <EditText
-        android:id="@+id/etAccount"
+    android:layout_height="match_parent"
+    android:background="@color/bg_page"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_l">
+
+    <!-- 顶部 Logo + 标题 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="乐健"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/text_huge"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_s"
+        android:layout_marginBottom="@dimen/spacing_xl"
+        android:text="健康习惯，从今天开始"
+        android:textColor="@color/text_sub"
+        android:textSize="@dimen/text_caption" />
+
+    <!-- 账号输入框 -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入账号"
-        android:inputType="text"/>
+        android:hint="账号"
+        app:boxCornerRadiusBottomEnd="@dimen/radius_input"
+        app:boxCornerRadiusBottomStart="@dimen/radius_input"
+        app:boxCornerRadiusTopEnd="@dimen/radius_input"
+        app:boxCornerRadiusTopStart="@dimen/radius_input">
 
-    <EditText
-        android:id="@+id/etPassword"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- 密码输入框 -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="请输入密码"
-        android:inputType="textPassword"/>
+        android:layout_marginTop="@dimen/spacing_m"
+        android:hint="密码"
+        app:boxCornerRadiusBottomEnd="@dimen/radius_input"
+        app:boxCornerRadiusBottomStart="@dimen/radius_input"
+        app:boxCornerRadiusTopEnd="@dimen/radius_input"
+        app:boxCornerRadiusTopStart="@dimen/radius_input"
+        app:passwordToggleEnabled="true">
 
-    <Button
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- 登录按钮（胶囊形） -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/spacing_l"
+        android:backgroundTint="@color/primary"
+        android:text="登录"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_body"
+        app:cornerRadius="25dp" />
+
+    <!-- 去注册 -->
+    <TextView
+        android:id="@+id/tvGoRegister"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="登录"/>
+        android:layout_marginTop="@dimen/spacing_m"
+        android:padding="@dimen/spacing_s"
+        android:text="没有账号？去注册"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/text_caption" />
 
 </LinearLayout>

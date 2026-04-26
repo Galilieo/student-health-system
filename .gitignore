@@ -32,3 +32,6 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Office 临时锁文件（Word/Excel/PPT 打开时自动生成）
+~$*
