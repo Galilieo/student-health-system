@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         tvExercise = findViewById(R.id.tvExercise);
 
         Button btnLogout = findViewById(R.id.btnLogout);
+        Button btnProfile = findViewById(R.id.btnProfile);
         Button btnCheckIn = findViewById(R.id.btnCheckIn);
         Button btnHistory = findViewById(R.id.btnHistory);
 
@@ -51,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
         });
+
+        btnProfile.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, ProfileActivity.class))
+        );
 
         btnCheckIn.setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, CheckInActivity.class))

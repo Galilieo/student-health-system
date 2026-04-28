@@ -15,6 +15,9 @@
             android:name=".HistoryActivity"
             android:exported="false" />
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".CheckInActivity"
             android:exported="false" />
         <activity
